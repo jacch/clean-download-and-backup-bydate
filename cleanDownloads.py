@@ -12,7 +12,8 @@ List = os.listdir(downloaddir)
 downloaddir1=os.path.expanduser("~") + os.sep + "下載"+ os.sep
 List1 = os.listdir(downloaddir1)
  
-
+#target dir 
+target_dir="Download_backup1"
 
 #check dir exist 
 def DirectoriesCreate(DirPath):
@@ -32,7 +33,7 @@ def CreateDirs(Path):
     return DirPath_M+ os.sep
 
     
-backup_path=CreateDirs("Download_backup1")
+backup_path=CreateDirs(target_dir)
  
 def move (L1,P1,backup_path):
     newdate=str(now.year)+str(now.month)+str(now.day)
@@ -46,7 +47,11 @@ def move (L1,P1,backup_path):
                  shutil.move(sourcefile,targetfile)
             else:
                 shutil.move(sourcefile,targetfile+newdate)
-
+        else: 
+            if not os.path.isdir(targetfile): 
+                 shutil.move(sourcefile,targetfile)
+            else:
+                shutil.move(sourcefile,targetfile+newdate)
 
  
 move(List1,downloaddir1,backup_path)
