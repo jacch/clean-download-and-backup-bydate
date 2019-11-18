@@ -5,13 +5,6 @@ import time
 import datetime
 now = datetime.datetime.now()
 
-#Getting into the Downloads folder.
-downloaddir=os.path.expanduser("~") + os.sep + "Downloads"+ os.sep
-List = os.listdir(downloaddir)
-
-downloaddir1=os.path.expanduser("~") + os.sep + "下載"+ os.sep
-List1 = os.listdir(downloaddir1)
- 
 #target dir 
 target_dir="Download_backup1"
 
@@ -53,6 +46,18 @@ def move (L1,P1,backup_path):
             else:
                 shutil.move(sourcefile,targetfile+newdate)
 
- 
-move(List1,downloaddir1,backup_path)
-move(List,downloaddir,backup_path)
+              
+             
+
+
+#if 下載 exists
+downloaddir1=os.path.expanduser("~") + os.sep + "下載"+ os.sep
+if os.path.isdir(downloaddir1): 
+ List1 = os.listdir(downloaddir1)
+ move(List1,downloaddir1,backup_path)
+
+#if Downloads exists
+downloaddir=os.path.expanduser("~") + os.sep + "Downloads"+ os.sep
+if os.path.isdir(downloaddir): 
+ List = os.listdir(downloaddir)
+ move(List,downloaddir,backup_path)
