@@ -38,9 +38,11 @@ Linux : linux_clean.sh
 chmod +x  ~/clean-download-and-backup-bydate/linux_clean.sh
 
 #LINUX Crontab AUTO  RUN
+
 30 12 * * * ~/clean-download-and-backup-bydate/linux_clean.sh
 
 
 #Windows
+
 
 
